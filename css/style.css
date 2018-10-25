@@ -1,0 +1,4 @@
+/* 自动补全的悬停背景色 */
+.ui-menu .ui-state-focus {
+    background:url(img/ui_header_bg.png);
+}

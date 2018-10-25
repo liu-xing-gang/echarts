@@ -1,0 +1,175 @@
+.page{float:left; width:100%; padding:20px 0}
+.page .content{float:right; color:#333}
+.page a {
+    padding: 5px 11px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #d0d0d0;
+    margin: 0 4px;
+    font-weight: none;
+    background: #FFFFFF;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor:pointer
+}
+
+.page a:hover {
+    border: 1px #f99c34 solid;
+    background: #f99c34;
+    color: #fff;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all .1s linear;
+    transition: all .1s linear;
+}
+
+.page .num a {
+    padding: 5px 11px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px #09c solid;
+    margin: 0 4px;
+    background: #0099cc;
+    font-weight: none;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.page .delete a {
+    padding: 0px 18px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #CACACA;
+    margin: 0 5px;
+    font-weight: bold;
+    background: #ECECEC;
+    font-size: 14px;
+    border-radius: 2px;
+    position: absolute;
+    left: -6px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.page .delete a:hover {
+    background: #E4E3E3;
+}
+
+.page .count {
+    font-style: normal;
+    color: #666;
+    font-size: 14px;
+    margin: 0 8px 0 0;
+}
+
+.page .count{color:#333}
+.page .count i {
+    font-style: normal;
+    color: #C5141C;
+    font-weight:bold;
+    margin: 0 2px;
+}
+
+.page .prev a {
+    padding: 6px 9px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #d0d0d0;
+    margin: 0 5px;
+    background: #fff;
+    font-size: 13px;
+    border-radius: 2px;
+}
+
+.page .prev a:hover {
+    padding: 6px 9px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #f99c34;
+    margin: 0 5px;
+    background: #f99c34;
+    font-size: 13px;
+    border-radius: 2px;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+.page .next a {
+    padding: 6px 9px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #d0d0d0;
+    margin: 0 5px;
+    background: #fff;
+    font-size: 13px;
+    border-radius: 2px;
+}
+
+.page .next a:hover {
+    padding: 6px 9px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #f99c34;
+    margin: 0 5px;
+    background: #f99c34;
+    font-size: 13px;
+    border-radius: 2px;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+.page .skip {
+    display: inline-block;
+    color: #939393;
+}
+.page .skip .skip_tit{color:#333}
+.page .skip .text_3 {
+    width: 47px;
+    height: 29px;
+    border: 1px solid #d0d0d0;
+    margin: -4px 5px 0 5px;
+    font-size: 14px;
+    color: #444;
+    font-family: "Microsoft YaHei", arial, sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    background: #fff;
+    -webkit-transition: all .2s linear 0s;
+    -moz-transition: all .2s linear 0s;
+    -o-transition: all .2s linear 0s;
+    transition: all .2s linear 0s;
+}
+
+.page .skip .text_3:hover {
+    border: 1px solid #ffc98d;
+}
+
+.page .skip .text_3:focus {
+    border: 1px solid #ffc98d;
+    box-shadow: 0 0 4px rgba(255, 201, 141, 0.6);
+}
+
+.page .skip .btn_2 {
+    width: 48px;
+    height: 31px;
+    line-height: 30px;
+    text-align: center;
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+    margin: -4px 5px 0;
+    font-weight: none;
+    background: #09c;
+    font-size: 13px;
+    border-radius: 4px;
+    font-family: "Microsoft YaHei", arial, sans-serif;
+    cursor: pointer;
+    -webkit-transition: background 0.2s linear;
+    -moz-transition: background .2s linear;
+    transition: background .2s linear;
+}
+
+.page .skip .btn_2:hover {
+    background: #06c;
+}

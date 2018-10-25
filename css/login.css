@@ -1,0 +1,103 @@
+@charset "utf-8";
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height:100%;
+	overflow:hidden;
+	font-size: 12px;
+}
+body {
+	padding: 0;
+	margin: 0 auto;
+	width: 100%;
+	height:100%;
+	background:#0069C9 url(../images/new/NewLogin_bg01.jpg) no-repeat center center;
+	position:relative;
+	color: #666; font-size: 12px; font-family:"Microsoft YaHei",Arial, Helvetica, sans-serif; line-height: 20px; font-weight: normal
+}
+* {
+	margin: 0px;
+	padding: 0px
+}
+li{list-style: none}
+form{margin: 0px}
+img{border: 0px; float:left}
+.clear{clear:both}
+div,ul,li,dd,textarea,input,select{font-size: 12px; font-family:"Microsoft YaHei",Arial, Helvetica, sans-serif; color: #666; line-height: 20px}
+input,textarea{outline:none; resize:none}
+
+.login_box{ position:absolute; left:50%; top:50%; margin-left:-270px; z-index:2; margin-top:-300px; width:540px; height:600px;}
+.login_box01{float:left; width:516px; height:397px; position:relative; margin-left:12px; display:inline}
+
+.logo{float:left; margin-top:15px;
+width:100%; height:64px; background:url(../images/new/logo.png) no-repeat center top}
+
+a:link,a:active,a:visited{ text-decoration: none; color: #06c;}
+a:hover {color: #06c; text-decoration: underline;}
+
+.login_addBg{ position:absolute; left:0px; top:0px; width:516px; height:397px; z-index:998;
+	background:url(../images/new/NewLogin_bg02.png) no-repeat left top}
+
+.login_add{ position:absolute; left:88px; top:86px; width:350px; z-index:999}
+.login_add h2{float:left; width:100%; border-bottom:2px solid #c6cdda; height:45px; line-height:45px; color:#fff; text-align:center}
+.login_add dl{float:left; width:350px; margin-top:16px}
+.login_add dl dd{float:left}
+.login_add dl dd.in{width:340px; height:46px; overflow:hidden; border:1px solid #BAC7D2;
+	background:#ECF5FA;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;}
+.login_add dl dd.curr{border:1px solid #65baff}
+
+.login_add dl dd.in input{float:left; height:46px; line-height:46px; border:0px; padding-left:45px; display:inline; color:#90A2BC; background:transparent; font-size:16px}
+.login_add dl dd.user input{width:290px; background:url(../images/new/icon_user.png) no-repeat 13px center}
+.login_add dl dd.pass input{width:290px; background:url(../images/new/icon_pass.png) no-repeat 13px center}
+
+.login_add dl dd.yzm{width:182px; margin-right:10px; display:inline}
+.login_add dl dd.yzm input{width:104px; text-align:left; margin:0px;
+width:290px; background:url(../images/new/icon_yzm.png) no-repeat 13px center}
+
+
+.login_add dl dd.yzmpic img{float:left; width:100px; height:48px;
+	background:#fff;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;}
+
+.login_add dl dd.text{height:40px; line-height:20px; margin-top:4px; text-align:center; display:inline}
+.login_add dl dd.text a{color:#90A2BC}
+.login_add dl dd.text a:hover{color:#06c; text-decoration:underline}
+
+.login_add dl#yzm dd.text{width:50px}
+
+.login_add dl.btn{width:340px; display:inline}
+.login_add dl.btn input{float:left; width:185px; height:36px; color:#fff; font-size:16px; line-height:36px; text-align:center; cursor:pointer; border:0px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	background:url(../images/new/NewLogin_bg03.gif) repeat-x left top
+}
+.login_add dl.btn input:hover{background:url(../images/new/NewLogin_bg03.gif) repeat-x left -36px}
+
+.login_add dl.btn dt{float:right; margin-top:9px}
+.login_add dl.btn dt em{float:left; width:20px; height:20px; line-height:20px; text-indent:-9999px; margin-right:10px; cursor:pointer; background:url(../images/new/icon_check.gif) no-repeat left top}
+.login_add dl.btn dt em.curr{background:url(../images/new/icon_check.gif) no-repeat left -20px}
+.login_add dl.btn dt span{float:left; height:20px; line-height:20px; font-size:14px; color:#C5C9CA}
+
+input,textarea{outline:none; resize:none}
+
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #fff inset;
+	border: 0px solid #CCC!important;
+}
+
+
+
+
+
+
+
+
+
+

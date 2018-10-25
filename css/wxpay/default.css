@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* ----------------------------
+2016.09.19 wangxinding y
+---------------------------- */
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, fieldset, legend, input, textarea, button,  p, blockquote, th, td {margin:0; padding:0; }
+html, body { width:100%; height:100%; background-color:#f7f5f6; color:#7f7f7f}
+body {color:#565656; font-family:Microsoft YaHei,Helvetica, sans-serif;  }
+li {list-style:none;}
+img, fieldset {border:0 none;}
+img {vertical-align:middle;}
+legend, hr {display:none;}
+legend {position:absolute; top:0; left:0; width:0; height:0; display:block; overflow:hidden; visibility:hidden; font-size:0; line-height:0;}
+input, select, textarea {font-size:100%; color:#747474; background:#fff; border:1px solid #e5e6e7;}
+button {border:0 none;background:transparent;}
+em, address {font-style:normal;}
+table {border-spacing:0;}
+caption {font-size: 0; line-height: 0; width:0; height:0; text-indent:-1000px; overflow: hidden;}
+a, a:link, a:visited {text-decoration:none; color:#747474;}
+a:hover, a:active {text-decoration:none;}
+a:focus {text-decoration:none;}
+
+* {font-weight:normal;}
+body {-webkit-text-size-adjust:100%;}
+
+.Mbox{width:95%; margin-left:2.5%}
+.Mbox1{ background:#E8E8E8; width:100%; padding-top:3px; padding-bottom:3px; float:left}
+.Mbox1 table td{padding:3px}
+.Mbox1 table td span{float:left; width:100%; height:36px; line-height:36px; font-size:1.2em; text-align:center; background:#fff;
+-moz-border-radius:4px;-webkit-border-radius:4px; border-radius:4px; cursor:pointer}
+.Mbox1 table td span.kong{background:#E8E8E8;}
+.Mbox1 table td span:active{background:#06c; color:#fff}
+.Mbox1 table td span.kong:active{background:#E8E8E8}
+.Mbox1 table td span.kong em{float:left; -moz-border-radius:4px;-webkit-border-radius:4px; border-radius:4px; background:#bbbbbb url(../images/wx_pic04.png) no-repeat center center;
+width:50px;
+height:36px;}
+.Mbox1 table td span.kong em:active{ background:#aaa9a9}
+
+/**共用按钮**/
+a.gybtn{float:left; color:#fff; width:100%; height:50px; line-height:50px; text-align:center; font-size:1.25em;
+-moz-border-radius:10px;-webkit-border-radius:10px; border-radius:10px; cursor:pointer}
+a.gybtn:hover{ text-decoration:none}
+
+.b_blue{background:#00B5EE}
+.b_blue:active{background:#06c}
+
+.b_orange{background:#ff9900}
+.b_orange:active{background:#dd6a04}
+
+.t_blue{color:#00b5ee}
+.t_gray{color:#343434}
+.t_orange{color:#ff9900}
+
+/**查询**/
+.Stext{width:100%; font-size:1.15em; padding:15px 0}
+
+.chepaihao{width:100%; height:60px;}
+.chepaihao span{float:left; width:10.6%; margin-right:1.8%; font-size:1.5em; text-align:center; line-height:46px; height:46px; border:1px solid #C6CBC7}
+.chepaihao span.sf{border:1px solid #00B5EE}
+.chepaihao span.sf em{float:left; border:1px solid #00B5EE; height:44px; width:99%; line-height:42px}
+.chepaihao span.ts{border:0px; width:auto; padding:0 5px; font-size:2em; line-height:46px}
+.chepaihao span input{float:left; width:100%; text-align:center; font-size:1.5em; line-height:100%; background:transparent; border:0px; height:100%}
+
+/**停车缴费**/
+.tc_name{float:left; width:95%; padding:15px 2.5%; background:#fff; border-bottom:2px solid #dddcdd}
+.tc_name em{float:left; width:100%; height:40px; line-height:40px; text-indent:48px; font-size:1.5em; background:url(../images/wx_pic01.png) no-repeat left center; background-size:38px 24px}
+.tc_name p{float:left; width:100%; margin-top:10px; font-size:1.25em}
+
+.tc_total{ position:absolute; bottom:0px; left:0px; width:95%; padding:10px 2.5%; background:#fff; border-top:2px solid #dddcdd}
+.tc_total p{float:left; height:36px; line-height:36px; font-size:1.25em}
+.tc_total p span{font-size:1.5em; margin:0 10px}
+.tc_total a.gybtn{float:right; width:100px; height:40px; line-height:40px; font-size:1.2em}
+
+.tc_youhui{float:left; width:100%; background:#fff; border-bottom:2px solid #dddcdd}
+.tc_youhui div{float:left; width:96%; padding:12px 0; font-size:1em; margin-left:2%; border-bottom:2px solid #dddcdd}
+.tc_youhui div.none{border:0px}
+.tc_youhui div em{float:left; margin-left:2px}
+.tc_youhui div span{float:right; margin-right:2px}
+
+.tc_time{float:left; width:100%; background:#fff; margin-top:10px; border-top:2px solid #dddcdd; border-bottom:2px solid #dddcdd}
+.tc_time dl{float:left; width:48%; padding:20px 0}
+.tc_time dl.none{float:left; width:51%; border-left:2px solid #dddcdd}
+.tc_time dl dt{float:left; width:30%; height:40px}
+.tc_time dl dt.a1{ background:url(../images/wx_pic02.png) no-repeat right center; background-size:40px 40px}
+.tc_time dl dt.a2{ background:url(../images/wx_pic03.png) no-repeat right center; background-size:40px 40px}
+.tc_time dl dd{float:left; width:70%; text-align:center; font-size:1em; line-height:1.5em}
+.tc_time dl dd span{font-size:1.25em; margin:0 3px}
+
+
+
+
+
+
+
+
+

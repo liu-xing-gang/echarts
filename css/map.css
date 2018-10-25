@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+#container {
+	padding: 30px;
+	height: 500px;
+}
+
+#west {
+	padding: 20px;
+}
+
+#dialog {
+	width: 200px;
+	height: 30px;
+	padding: 10px;
+}
+
+#dlgUpload {
+	width: 220px;
+	height: 30px;
+	padding: 10px;
+}

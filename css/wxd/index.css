@@ -1,0 +1,121 @@
+@charset "utf-8";
+html{overflow:auto}
+body {
+	background:#006bb6 url(../../images/main/ind_bg02_new.jpg) no-repeat center 65px;
+	background-attachment:fixed
+}
+.indexBox{float:left; width:100%}
+.indexBox01{width:1280px; margin:0 auto; position:relative}
+.indexBox02{float:left; width:100%; height:710px; background:url(../../images/main/ind_bg14.png) no-repeat center top}
+
+
+.index_A{float:left; width:366px; height:644px; padding-top:10px}
+.index_A dl{float:left; width:237px; height:92px; margin:24px 0 0 73px; display:inline}
+.index_A dl.a1{background:url(../../images/main/ind_bg08.png) no-repeat left top;}
+.index_A dl.a2{background:url(../../images/main/ind_bg09.png) no-repeat left top;}
+.index_A dl.a3{background:url(../../images/main/ind_bg10.png) no-repeat left top;}
+.index_A dl.a4{background:url(../../images/main/ind_bg14_1.png) no-repeat left top;}
+.index_A dl.a5{background:url(../../images/main/ind_bg15_1.png) no-repeat left top;}
+.index_A dl dt{float:left; width:73px; height:78px; margin:5px 0 0 8px; display:inline; background-position:center center; background-repeat:no-repeat}
+.index_A dl dd{float:left; color:#fff; margin-top:20px; line-height:22px; font-size:16px}
+.index_A dl dd b{font-size:20px; margin-right:5px}
+.index_A dl dd span{color:#fff;opacity:0.7;filter:alpha(opacity=70);}
+.index_A dl dt.a1{ background-image:url(../../images/main/ind_bg11_1.png)}
+.index_A dl dt.a2{ background-image:url(../../images/main/ind_bg11_2.png)}
+.index_A dl dt.a3{ background-image:url(../../images/main/ind_bg11_3.png)}
+.index_A dl dt.a4{ background-image:url(../../images/main/ind_bg11_4.png)}
+.index_A dl dt.a5{ background-image:url(../../images/main/ind_bg11_5.png)}
+
+.index_B{float:left; width:855px; height:612px; margin-top:42px; position:relative}
+
+.b_tag{ position:absolute; left:25px; top:25px; z-index:10}
+.b_tag ul{float:left; width:88px; border:1px solid #277ad8; border-bottom:0px;
+-webkit-border-radius:2px;
+   -moz-border-radius:2px;
+        border-radius:2px
+}
+.b_tag ul li{float:left; width:100%; height:38px; text-align:center; font-size:14px; line-height:38px; color:#fff; background:#016ba9; cursor:pointer;
+border-bottom:1px solid #277ad8;
+}
+.b_tag ul li.curr{ background:url(../../images/main/ind_bg07.gif) repeat-x left top;}
+
+.b_month{ position:absolute; right:30px; top:40px; height:460px; border-right:1px dashed #0a96d4; z-index:10}
+.monthAA{float:left; width:80px; height:504px; position:relative}
+.monthAA ul{ position:absolute; right:-25px; top:-20px; width:80px; height:504px;}
+.monthAA ul li{float:left; width:70px; height:42px; color:#fff; position:relative; cursor:pointer}
+.monthAA ul li em{float:left; height:42px; line-height:42px; width:36px; text-align:right}
+.monthAA ul li span{ position:absolute; right:0px; top:6px; width:30px; height:30px;
+background:url(../../images/main/ind_bg06.png) no-repeat center center}
+.monthAA ul li.curr em{color:#f6b61d}
+.monthAA ul li.curr span{background:url(../../images/main/ind_bg06_over.png) no-repeat center center}
+.monthAA ul li:hover em{color:#f6b61d}
+.monthAA ul li:hover span{background:url(../../images/main/ind_bg06_over.png) no-repeat center center}
+
+
+h2.oneTitle{float:left; width:1200px; margin:24px 0 0 25px; height:43px; line-height:43px; font-size:15px; color:#fff;
+background:url(../../images/main/ind_bg05.png) no-repeat 25px center; text-indent:49px; opacity:0.95;filter:alpha(opacity=95)}
+h2.oneTitle span{font-size:14px; margin-left:10px}
+
+h2.twoTitle{float:left; width:100%; height:43px; line-height:43px; font-size:15px; color:#fff;
+background:url(../../images/main/ind_bg05.png) no-repeat 29px center; text-indent:52px; opacity:0.95;filter:alpha(opacity=95);}
+
+.index_C{float:left; width:620px; height:355px; margin:0 10px; overflow:hidden; background:url(../../images/main/ind_bg03.png) no-repeat left top}
+.index_C h2.twoTitle{margin-top:14px}
+
+.index_D{float:left; width:1245px; height:243px; margin:10px 0 0 18px; overflow:hidden; background:url(../../images/main/ind_bg04.png) no-repeat left top}
+.index_D h2.twoTitle{margin-top:5px}
+
+.index_D1{float:left; width:265px; margin-left:6px; height:200px}
+
+.index_D2{float:left; width:415px; margin-left:6px; height:200px}
+
+.index_E{float:left; width:1227px; margin:30px 0 0 27px; background:#004d86 url(../../images/main/ind_bg121.gif) repeat-x left top}
+
+.index_E table{float:left; width:100%;}
+.index_E table tr th{text-align:center; padding:5px 0; line-height:20px; font-size:14px; font-weight:bold; color:#fff;
+background: url(../../images/main/ind_bg12.png) no-repeat left center
+}
+.index_E table tr th span{font-size:12px}
+.index_E table tr td{text-align:center; line-height:42px; line-height:42px; color:#fff; font-size:14px}
+.index_E table tr:nth-child(1){ background:transparent}
+.index_E table tr th:nth-child(1){ background:none}
+
+.index_E table tr.odd{background-color:#005aa0}
+.index_E table tr.even{background-color:#004d86}
+.index_E table tr.over{background-color:#014273}
+
+.main_page{float:left; width:100%; height:40px}
+
+/* jScrollPane 必要元素 */
+.jScrollPaneContainer{float:left; position:relative;overflow:hidden;z-index:1;}
+.jScrollPaneTrack{position:absolute;cursor:pointer;right:0;top:0;height:100%;background:#aaa; display:none}
+.jScrollPaneDrag{position:absolute;background:#666;cursor:pointer;overflow:hidden;}
+.jScrollPaneDragTop{position:absolute;top:0;left:0;overflow:hidden;}
+.jScrollPaneDragBottom{position:absolute;bottom:0;left:0;overflow:hidden;}
+a.jScrollArrowUp{display:block;position:absolute;z-index:1;top:0;right:0;text-indent:-2000px;overflow:hidden;/*background-color:#666;*/height:9px;}
+a.jScrollArrowUp:hover{/*background-color:#f60;*/}
+a.jScrollArrowDown{display:block;position:absolute;z-index:1;bottom:0;right:0;text-indent:-2000px;overflow:hidden;/*background-color:#666;*/height:9px;}
+a.jScrollArrowDown:hover{/*background-color:#f60;*/}
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover{/*background-color:#f00;*/}
+/* 全身滚动自定义样式 */
+.jScrollPaneTrack{background:url(../images/scroll/scroll_bg00.gif) repeat-y;}
+.jScrollPaneDrag{background:url(../images/scroll/scroll_bg01.gif) repeat-y;}
+.jScrollPaneDrag:hover{background:url(../images/scroll/scroll_bg02.gif) repeat-y;}
+.jScrollPaneDragTop{height:1px;background:url(../images/scroll/scroll_bg03.gif) no-repeat}
+.jScrollPaneDragBottom{height:1px;background:url(../images/scroll/scroll_bg03.gif) no-repeat}
+a.jScrollArrowUp{height:9px;background:url(../images/scroll/scroll_up.gif) no-repeat 0 top; display:none}
+a.jScrollArrowUp:hover{background-position:0 -9px;}
+a.jScrollArrowDown{height:9px;background:url(../images/scroll/scroll_down.gif) no-repeat 0 -9px; display:none}
+a.jScrollArrowDown:hover{background-position:0 0;}
+
+
+
+
+
+
+
+
+
+
+
+

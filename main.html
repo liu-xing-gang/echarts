@@ -1,0 +1,870 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ECharts">
+<title>烜赫智慧停车云平台</title>
+<link href="css/wxd/common2018.css" rel="stylesheet" type="text/css" /><!--网站共用CSS-->
+<link href="css/wxd/index.css" rel="stylesheet" type="text/css" /><!--首页CSS-->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script><!--网站共用jquery-->
+<script type="text/javascript" src="js/main.js"></script><!--首页专用JS-->
+<script type="text/javascript" src="js/echarts.js"></script><!--echarts图表-->
+<script type="text/javascript" src="js/echartsTool_index.js"></script><!--首页echarts图表-->
+<script type="text/javascript">
+var ie6AB = !window.XMLHttpRequest;
+var bAB = document.getElementById("_stoolbarTop");
+if (ie6AB) {
+	bAB.className = "stoolbar_top stoolbar_top_ie6";
+	if(window.attachEvent){
+		window.attachEvent("onscroll",function(){bAB.className = bAB.className;});
+	}
+}
+</script>
+<style type="text/css">
+.stoolbar_top {z-index:9000; left:0; width: 100%; top:0px; position:fixed; height:65px}
+.stoolbar_top_ie6{left:expression((document.documentElement.clientWidth - this.offsetWidth)/2 +'px'); margin:0px; position:absolute !important; top:0)}
+</style>
+</head>
+<body>
+<!--新的顶部-->
+<div class="stoolbar_top" id="_stoolbarTop">
+	<div class="NewHeader">
+		<div class="indexBox01" style="height:65px">
+			<div class="logo"></div>
+			<dl>
+				<dt>
+					<label class="curr"><a href="javascript:void(0)" class="mh1">首页</a></label>
+					<label><a href="javascript:void(0)" class="mh2">监控中心</a></label>
+					<label><a href="javascript:void(0)" class="mh3">系统设置</a></label>
+				</dt>
+				<dd>
+					<span>admin</span>
+					<a href="javascript:void(0)">退出</a>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div style="float:left; width:100%; height:65px"></div>
+<!--新的顶部-->
+<div id="paneALLP" class="scroll-paneALLP">
+<div class="indexBox">
+	<div class="indexBox01">
+		<div class="indexBox02">
+			<h2 class="oneTitle">各省平均泊位利用率情况<span>地图颜色越深 利用率越高</span></h2>
+			<div class="index_A">
+				<dl class="a1">
+					<dt class="a1"></dt>
+					<dd>
+						<b>20</b>个<br /><span>车场总数</span>
+					</dd>
+				</dl>
+				<dl class="a2">
+					<dt class="a2"></dt>
+					<dd>
+						<b>108</b>个<br /><span>车位总数</span>
+					</dd>
+				</dl>
+				<dl class="a3">
+					<dt class="a3"></dt>
+					<dd>
+						<b>180</b>个<br /><span>本月订单数</span>
+					</dd>
+				</dl>
+				<dl class="a4">
+					<dt class="a4"></dt>
+					<dd>
+						<b>1200</b>元<br /><span>本月临停收入</span>
+					</dd>
+				</dl>
+				<dl class="a5">
+					<dt class="a5"></dt>
+					<dd>
+						<b>1750</b>元<br /><span>本月月卡收秝</span>
+					</dd>
+				</dl>
+			</div>
+			<div class="index_B">
+				<div class="b_tag" style="display:none">
+					<ul>
+						<li>工作日</li>
+						<li>周末</li>
+						<li class="curr">平均</li>
+					</ul>
+				</div>
+				<div class="b_month" style="display:none">
+					<div class="monthAA">
+						<ul>
+							<li class="curr"><em>1月</em><span></span></li>
+							<li><em>2月</em><span></span></li>
+							<li><em>3月</em><span></span></li>
+							<li><em>4月</em><span></span></li>
+							<li><em>5月</em><span></span></li>
+							<li><em>6月</em><span></span></li>
+							<li><em>7月</em><span></span></li>
+							<li><em>8月</em><span></span></li>
+							<li><em>9月</em><span></span></li>
+							<li><em>10月</em><span></span></li>
+							<li><em>11月</em><span></span></li>
+							<li><em>12月</em><span></span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="MapDW" style="position:absolute; z-index:10; right:292px; top:170px">
+					<img src="images/map_DW.png" />
+				</div>
+				<div class="MapDW" style="position:absolute; z-index:10; right:240px; top:290px">
+					<img src="images/map_DW.png" />
+				</div>
+				<div id="MainMap" style="float:left; width:100%; height:85%"></div>
+			</div>
+		</div>
+		<div class="index_C">
+			<h2 class="twoTitle">本月车场临停收入TOP10</h2>
+			<div id="BenYueLinTing" style="float:left; width:592px; height:283px; margin-left:14px"></div>
+		</div>
+		<div class="index_C">
+			<h2 class="twoTitle">本月平均泊位利用率TOP10</h2>
+			<div id="BenYueLiYong" style="float:left; width:592px; height:283px; margin-left:14px"></div>
+		</div>
+		<div class="index_D">
+			<div class="index_D1" style="margin-left:8px">
+				<h2 class="twoTitle">临停收入30000.00元</h2>
+				<div id="LinTing" style="float:left; width:265px; height:194px"></div>
+			</div>
+			<div class="index_D1">
+				<h2 class="twoTitle">当日订单数量6900单</h2>
+				<div id="DangRiDingDan" style="float:left; width:265px; height:194px"></div>
+			</div>
+			<div class="index_D1">
+				<h2 class="twoTitle">当日线上收入6900元</h2>
+				<div id="DangRiShouRu" style="float:left; width:265px; height:194px"></div>
+			</div>
+			<div class="index_D2">
+				<h2 class="twoTitle">近七日出入口流量</h2>
+				<div id="RenYuanZaiGang" style="float:left; width:415px; height:194px"></div>
+			</div>
+		</div>
+		<div class="index_E">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+				<th width="92">地区</th>
+				<th width="110">停车场个数</th>
+				<th width="125">总车位数</th>
+				<th width="130">车位利用率</th>
+				<th width="130">本月订单数</th>
+				<th width="130">本月临停收入</th>
+				<th>月卡数量<br /><span>（本月新开卡+续费张数）</span></th>
+				<th>月卡收入<br /><span>（本月新开卡+续费数额）</span></th>
+			  </tr>
+			  <tr>
+				<td>北京</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			  <tr>
+				<td>广东</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			  <tr>
+				<td>上海</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			  <tr>
+				<td>福建</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			  <tr>
+				<td>河北</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			  <tr>
+				<td>浙江</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			  <tr>
+				<td>江西</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			  <tr>
+				<td>湖北</td>
+				<td>12000</td>
+				<td>142000</td>
+				<td>60%</td>
+				<td>10000</td>
+				<td>18000.00</td>
+				<td>1450</td>
+				<td>14000.00</td>
+			  </tr>
+			</table>
+			<div class="main_page">
+				
+			</div>
+		</div>
+		<div style="float:left; width:100%; height:30px">&nbsp;</div>
+	</div>
+</div>
+</div>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script><!--网站共用jquery-->
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script><!--控制个性滚动条-->
+<script type="text/javascript" src="js/jScrollPane.js"></script><!--控制个性滚动条-->
+<script type="text/javascript">
+$(function(){
+	$('#paneALLP').height(document.body.clientHeight - 65);
+	$('#paneALLP').width(document.body.clientWidth);
+	$('#paneALLP').jScrollPane({showArrows:true, scrollbarWidth: 8, arrowSize: 9});
+	
+	for(var i=0;i<1000;i++){
+		$(".MapDW img").each(function(){
+			$(this).fadeOut(500);
+			$(this).fadeIn(500);
+			$(this).fadeOut(500);
+			$(this).fadeIn(500);
+		});
+	}	
+})
+</script>
+<script src="echart_map/build/dist/echarts.js"></script>
+<script type="text/javascript">
+	require.config({
+		paths: {
+			echarts: 'echart_map/build/dist'
+		}
+	});
+	
+	// 使用
+	require(
+		[
+			'echarts',
+			'echarts/chart/map'
+		],
+		function (ec) {
+			var dataAAAA = [
+						{name: '北京',value: 1,"kxcws":12,"drddl":15,"drsr":20},
+						{name: '天津',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '上海',value: 1,"kxcws":12,"drddl":15,"drsr":20},
+						{name: '重庆',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '河北',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '河南',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '云南',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '辽宁',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黑龙江',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '湖南',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '安徽',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '山东',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '新疆',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '江苏',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '浙江',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '江西',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '湖北',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '广西',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '甘肃',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '山西',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '内蒙古',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '陕西',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '吉林',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '福建',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '贵州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '广东',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '青海',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '西藏',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '四川',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宁夏',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '海南',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '台湾',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '香港',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '澳门',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						
+						{name:'东城区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'西城区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'崇文区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'宣武区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'朝阳区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'丰台区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'石景山区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'海淀区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'门头沟区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'房山区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'通州区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'顺义区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'昌平区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'大兴区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'怀柔区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'平谷区',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'密云县',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						{name:'延庆县',value:0,"kxcws":0,"drddl":0,"drsr":0},
+						
+						{name: '巴音郭楞蒙古自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '和田地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '哈密地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阿克苏地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阿勒泰地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '喀什地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '塔城地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '昌吉回族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '克孜勒苏柯尔克孜自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '吐鲁番地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '伊犁哈萨克自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '博尔塔拉蒙古自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '乌鲁木齐市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '克拉玛依市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阿拉尔市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '图木舒克市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '五家渠市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '石河子市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '那曲地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阿里地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '日喀则地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '林芝地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '昌都地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '山南地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '拉萨市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '呼伦贝尔市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阿拉善盟',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '锡林郭勒盟',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '鄂尔多斯市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '赤峰市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '巴彦淖尔市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '通辽市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '乌兰察布市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '兴安盟',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '包头市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '呼和浩特市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '乌海市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '海西蒙古族藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '玉树藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '果洛藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '海南藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '海北藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黄南藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '海东地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '西宁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '甘孜藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阿坝藏族羌族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '凉山彝族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '绵阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '达州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '广元市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '雅安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宜宾市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '乐山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '南充市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '巴中市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '泸州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '成都市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '资阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '攀枝花市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '眉山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '广安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '德阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '内江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '遂宁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '自贡市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黑河市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '大兴安岭地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '哈尔滨市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '齐齐哈尔市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '牡丹江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '绥化市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '伊春市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '佳木斯市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '鸡西市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '双鸭山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '大庆市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '鹤岗市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '七台河市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '酒泉市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '张掖市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '甘南藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '武威市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '陇南市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '庆阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '白银市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '定西市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '天水市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '兰州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '平凉市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '临夏回族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '金昌市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '嘉峪关市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '普洱市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '红河哈尼族彝族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '文山壮族苗族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '曲靖市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '楚雄彝族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '大理白族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '临沧市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '迪庆藏族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '昭通市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '昆明市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '丽江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '西双版纳傣族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '保山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '玉溪市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '怒江傈僳族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '德宏傣族景颇族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '百色市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '河池市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '桂林市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '南宁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '柳州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '崇左市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '来宾市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '玉林市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '梧州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '贺州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '钦州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '贵港市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '防城港市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '北海市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '怀化市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '永州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '邵阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '郴州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '常德市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '湘西土家族苗族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '衡阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '岳阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '益阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '长沙市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '株洲市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '张家界市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '娄底市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '湘潭市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '榆林市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '延安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '汉中市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '安康市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '商洛市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宝鸡市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '渭南市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '咸阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '西安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '铜川市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '清远市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '韶关市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '湛江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '梅州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '河源市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '肇庆市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '惠州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '茂名市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '江门市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阳江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '云浮市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '广州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '汕尾市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '揭阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '珠海市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '佛山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '潮州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '汕头市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '深圳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '东莞市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '中山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '延边朝鲜族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '吉林市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '白城市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '松原市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '长春市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '白山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '通化市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '四平市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '辽源市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '承德市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '张家口市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '保定市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '唐山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '沧州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '石家庄市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '邢台市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '邯郸市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '秦皇岛市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '衡水市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '廊坊市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '恩施土家族苗族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '十堰市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宜昌市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '襄樊市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黄冈市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '荆州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '荆门市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '咸宁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '随州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '孝感市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '武汉市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黄石市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '神农架林区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '天门市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '仙桃市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '潜江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '鄂州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '遵义市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黔东南苗族侗族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '毕节地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黔南布依族苗族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '铜仁地区',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黔西南布依族苗族自治州',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '六盘水市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '安顺市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '贵阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '烟台市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '临沂市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '潍坊市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '青岛市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '菏泽市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '济宁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '德州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '滨州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '聊城市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '东营市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '济南市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '泰安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '威海市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '日照市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '淄博市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '枣庄市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '莱芜市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '赣州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '吉安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '上饶市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '九江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '抚州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宜春市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '南昌市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '景德镇市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '萍乡市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '鹰潭市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '新余市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '南阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '信阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '洛阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '驻马店市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '周口市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '商丘市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '三门峡市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '新乡市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '平顶山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '郑州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '安阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '开封市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '焦作市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '许昌市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '濮阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '漯河市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '鹤壁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '大连市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '朝阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '丹东市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '铁岭市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '沈阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '抚顺市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '葫芦岛市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阜新市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '锦州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '鞍山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '本溪市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '营口市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '辽阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '盘锦市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '忻州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '吕梁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '临汾市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '晋中市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '运城市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '大同市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '长治市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '朔州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '晋城市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '太原市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阳泉市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '六安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '安庆市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '滁州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宣城市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '阜阳市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宿州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '黄山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '巢湖市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '亳州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '池州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '合肥市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '蚌埠市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '芜湖市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '淮北市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '淮南市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '马鞍山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '铜陵市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '南平市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '三明市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '龙岩市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宁德市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '福州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '漳州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '泉州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '莆田市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '厦门市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '丽水市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '杭州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '温州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宁波市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '舟山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '台州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '金华市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+
+						{name: '衢州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '绍兴市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '嘉兴市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '湖州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '盐城市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '徐州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '南通市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '淮安市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '苏州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '宿迁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '连云港市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '扬州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '南京市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '泰州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '无锡市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '常州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '镇江市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '吴忠市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '中卫市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '固原市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '银川市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '石嘴山市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '儋州市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '文昌市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '乐东黎族自治县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '三亚市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '琼中黎族苗族自治县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '东方市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '海口市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '万宁市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '澄迈县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '白沙黎族自治县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '琼海市',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '昌江黎族自治县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '临高县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '陵水黎族自治县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '屯昌县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '定安县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '保亭黎族苗族自治县',value: 0,"kxcws":0,"drddl":0,"drsr":0},
+						{name: '五指山市',value: 0,"kxcws":0,"drddl":0,"drsr":0}
+					];
+			
+			// --- 地图 ---
+			var myChart = ec.init(document.getElementById('MainMap'));
+			var ecConfig = require('echarts/config');
+			var zrEvent = require('zrender/tool/event');
+			var curIndx = 0;
+			var mapType = [
+				'china',
+				// 23个省
+				'广东', '青海', '四川', '海南', '陕西', 
+				'甘肃', '云南', '湖南', '湖北', '黑龙江',
+				'贵州', '山东', '江西', '河南', '河北',
+				'山西', '安徽', '福建', '浙江', '江苏', 
+				'吉林', '辽宁', '台湾',
+				// 5个自治区
+				'新疆', '广西', '宁夏', '内蒙古', '西藏', 
+				// 4个直辖市
+				'北京', '天津', '上海', '重庆',
+				// 2个特别行政区
+				'香港', '澳门'
+			];
+			myChart.on(ecConfig.EVENT.MAP_SELECTED, function (param){
+				var len = mapType.length;
+				var mt = mapType[curIndx % len];
+				if (mt == 'china') {
+					// 全国选择时指定到选中的省份
+					$(".MapDW").hide();
+					var selected = param.selected;
+					for (var i in selected) {
+						if (selected[i]) {
+							mt = i;
+							while (len--) {
+								if (mapType[len] == mt) {
+									curIndx = len;
+								}
+							}
+							break;
+						}
+					}
+					option.tooltip.formatter = function(a){						
+						var res = "";
+						for (var i = 0; i < dataAAAA.length; i++) {
+						   if(a[1] == dataAAAA[i].name){
+							 res += dataAAAA[i].name;
+							 res += '</br>停车场数量：' + dataAAAA[i].value+"个";
+							 res += '</br>空闲车位数：' + dataAAAA[i].kxcws+"个";
+							 res += '</br>当日订单量：' + dataAAAA[i].drddl+"单";
+							 res += '</br>当日收入：' + dataAAAA[i].drsr+"元";
+						   }
+						 }                   
+						return res; 
+					};
+				}
+				else {
+					$(".MapDW").show();
+					curIndx = 0;
+					mt = 'china';
+					option.tooltip.formatter = function(a){						
+						var res = "";
+						for (var i = 0; i < dataAAAA.length; i++) {
+						   if(a[1] == dataAAAA[i].name){
+							 res += dataAAAA[i].name;
+							 res += '</br>停车场数量：' + dataAAAA[i].value+"个";
+							 res += '</br>空闲车位数：' + dataAAAA[i].kxcws+"个";
+							 res += '</br>当日订单量：' + dataAAAA[i].drddl+"单";
+							 res += '</br>当日收入：' + dataAAAA[i].drsr+"元";
+						   }
+						 }                   
+						return res; 
+					};
+				}
+				option.series[0].mapType = mt;
+				option.title.subtext = '';
+				myChart.setOption(option, true);
+			});
+			option = {
+				title: {
+					text : '',					
+				},
+				tooltip : {
+					trigger: 'item',					
+					formatter:function(a){
+						var res = "";
+						for (var i = 0; i < dataAAAA.length; i++) {
+						   if(a[1] == dataAAAA[i].name){
+							 res += dataAAAA[i].name;
+							 res += '</br>停车场数量：' + dataAAAA[i].value+"个";
+							 res += '</br>空闲车位数：' + dataAAAA[i].kxcws+"个";
+							 res += '</br>当日订单量：' + dataAAAA[i].drddl+"单";
+							 res += '</br>当日收入：' + dataAAAA[i].drsr+"元";
+						   }
+						 }                   
+						return res;
+					}
+				},
+				dataRange: {
+					show: true,
+					min: 0,
+					max: 1,
+					x: '3%',
+					y: 'bottom',
+					orient:'horizontal',
+					color: ['#FFF000','#336EBC'],
+					textStyle:{
+						color:'#fff'
+					},
+					text:['高','低'],// 文本，默认为数值文本
+					calculable:true
+				},
+				series : [
+					{
+						name: '停车场信息',
+						type: 'map',
+						mapType: 'china',
+						selectedMode : 'single',
+						showLegendSymbol : false,//去掉地图的小点
+						itemStyle:{
+							normal:{
+								label:{
+									show:true,
+									textStyle:{//地图区域文字颜色
+										color:'#fff'
+									},
+									formatter:function(aname,value){//地图区域显示文字
+										//return "  "+aname+" \n "+value+"%";
+										return aname;
+									}
+								},
+								borderColor:'rgba(255,255,255,1)',//地图边框颜色
+								borderWidth:1
+							},
+							emphasis:{
+								label:{
+									show:true,
+									textStyle:{//
+										color:'#000'
+									}
+								},
+								areaStyle:{
+									color:'#B7DFFF'
+								},
+							}
+						},
+						data:dataAAAA,
+						geoCoord: {
+							"北京":[116.46,39.92],
+							"上海":[121.48,31.22]
+						}
+					}
+				]
+			};
+			myChart.setOption(option, true);
+		}
+	);
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
